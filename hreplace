@@ -1,0 +1,6 @@
+#!/bin/bash
+#hreplace :: To delete and replace existing file on hdfs with edited one this command should update file on hdfs. Purpose of this command is to delete existing file on hdfs and replace it by new file from current directory on local.
+
+hc rmr $*                                                    
+hc put $*
+

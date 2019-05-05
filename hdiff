@@ -1,0 +1,31 @@
+#!/bin/bash
+
+# hdiff :: To compare any two files on hdfs                                  
+
+#This command should be used to compare any two files on hdfs. Way to achieve this is first read the file #using "hcat" save it on temporary location and compare two files using "diff" command on linux. This #commands saves lot of time and repetitive steps while comparing any two files irrespective of their  extension.
+
+
+#hcat :: To display content of any file on hdfs. As "cat" suggests this command is to display any file on hdfs. This command shall support files .gzip2,.bzip2,.snappy,.lzo,.lz4,.avro,.json etc .Command should use extension of the file as an important indicator to decide how to read file on hdfs. If is is snappy then user should able to use snappy utility to read the .snappy file, same for lzo and lz4. Similarly, avro utility jar file can be used to read avro by converting it to json. We should certainly use "hc" command here to write "hcat" command. Please contact me in case you want to have simple script for this command.
+
+
+
+#Usage:                                                                       
+#	hdiff file1.gzip2 file2.bzip2                                               
+#	hdiff file3.lz0 file4.snappy 
+
+
+                                                        
+first_file=tmp_$(date +"%s")                                       
+second_file=tmp_$(date +"%s")                                           
+
+hcat $1 > $firsr_file                                                      
+
+hcat $2 > $second_file                                                    
+
+diff $firsr_file $second_file                                                 
+
+rm $firsr_file $second_file 
+
+
+
+
